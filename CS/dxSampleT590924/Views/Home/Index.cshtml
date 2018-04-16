@@ -1,0 +1,86 @@
+@using dxSampleT590924.Models
+
+@model Customer
+
+@{
+    ViewBag.Title = "T590924";
+}
+<h2>Edit Form:</h2>
+
+<script>
+    function CreateInputElement(itemName, itemValue, itemIndex, container) {
+        var $input = $("<input/>");
+
+        $input.appendTo(container).attr({ type: "hidden", name: "Orders[" + itemIndex + "]." + itemName }).val(itemValue);
+    }
+    function clickHandler(e) {
+        if (e.validationGroup.validate().isValid) {
+            $("#grid").dxDataGrid("instance").getDataSource().load().done(function (items) {
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    for (var property in item) {
+                        if (item.hasOwnProperty(property)) {
+                            CreateInputElement(property, item[property], i, $("#editEmployee")[0]);
+                        }
+                    }
+                }
+                $("#editEmployee").submit();
+
+            })
+        }
+    }
+</script>
+
+@using (Html.BeginForm("PostCustomer", "Home", FormMethod.Post, new { id = "editEmployee" }))
+{
+    @(Html.DevExtreme().Form<Customer>()
+        .ValidationGroup("customer")
+        .FormData(Model)
+        .Items(formItems =>
+        {
+        formItems.AddSimpleFor(m => m.CustomerID)
+            .Editor(e => e.NumberBox().ReadOnly(true));
+        formItems.AddSimpleFor(m => m.FirstName)
+            .IsRequired(true);
+        formItems.AddSimpleFor(m => m.LastName)
+             .IsRequired(true);
+
+        formItems.AddSimpleFor(m => m.HireDate)
+             .Editor(e => e.DateBox());
+        formItems.AddSimple().Template(@<text>
+            @(Html.DevExtreme().DataGrid<Order>()
+            .ID("grid")
+    .ShowBorders(true)
+    .Editing(s => s.AllowUpdating(true).AllowAdding(true).AllowDeleting(true))
+    .KeyExpr(new string[] { "OrderID" })
+    .DataSource(new JS("[]"))
+    .DateSerializationFormat("MM-dd-yyyy")
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.OrderID);
+        columns.AddFor(m => m.OrderDate);
+        columns.AddFor(m => m.CustomerName);
+        columns.AddFor(m => m.ShipCountry);
+        columns.AddFor(m => m.ShipCity);
+    })
+    .Paging(p => p.PageSize(10))
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .GroupPanel(p => p.Visible(true))
+    .Grouping(g => g.AutoExpandAll(false))
+    .RemoteOperations(false))
+        </text>);
+        })
+
+
+    )
+
+    @(Html.DevExtreme().Button()
+        .Text("Validate and Submit")
+        .ValidationGroup("customer")
+        .OnClick("clickHandler")
+        .UseSubmitBehavior(false)
+    )
+}
+
+@Html.ValidationSummary()
