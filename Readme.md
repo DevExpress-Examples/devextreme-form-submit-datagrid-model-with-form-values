@@ -8,7 +8,7 @@
 <!-- default file list end -->
 # How to submit DataGrid model with form values
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t590924)**
+**[[Run Online]](https://codecentral.devexpress.com/t590924/)**
 <!-- run online end -->
 
 
