@@ -12,9 +12,6 @@
 * [Success.cshtml](./CS/dxSampleT590924/Views/Home/Success.cshtml)
 <!-- default file list end -->
 # How to submit DataGrid model with form values
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t590924/)**
-<!-- run online end -->
 
 
 <p>By default, the HTML form collects information from all hidden inputs and posts it to the Controller. DataGrid is not an editor and doesn't have a hidden input. As a result, model values assigned to the grid's DataSource option are not passed to the server out of the box.</p>
