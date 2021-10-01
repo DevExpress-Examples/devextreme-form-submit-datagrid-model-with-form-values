@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+}
+
+@using dxSampleT590924.Models
+@model Customer
+
+<h2>Customer @Model.CustomerID has been suceessfully created</h2>
+<div class="dx-fieldset">
+    <div class="dx-fieldset-header">Details</div>
+    <div class="dx-field">
+        <div class="dx-field-label">First Name</div>
+        <div class="dx-field-value">
+            @Model.FirstName
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Last Name</div>
+        <div class="dx-field-value">
+            @Model.LastName
+        </div>
+    </div>
+    <div class="dx-field">
+        <div class="dx-field-label">Hire Date</div>
+        <div class="dx-field-value">
+            @Model.HireDate
+        </div>
+    </div>
+</div>
+<h2>Customer Orders:</h2>
+@(Html.DevExtreme().DataGrid<Order>
+    ()
+    .ID("grid")
+    .ShowBorders(true)
+    .DataSource(Model.Orders, "OrderID")
+    .Editing(s => s.AllowUpdating(true).AllowAdding(true).AllowDeleting(true))
+    .KeyExpr(new string[] { "OrderID" })
+    .Columns(columns =>
+    {
+        columns.AddFor(m => m.OrderID);
+        columns.AddFor(m => m.OrderDate);
+        columns.AddFor(m => m.CustomerName);
+        columns.AddFor(m => m.ShipCountry);
+        columns.AddFor(m => m.ShipCity);
+    })
+    .Paging(p => p.PageSize(10))
+)
+
+
+<a class="navbar-brand" href="/">Back</a>
