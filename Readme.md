@@ -6,10 +6,10 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [HomeController.cs](./CS/dxSampleT590924/Controllers/HomeController.cs) (VB: [HomeController.vb](./VB/dxSampleT590924/Controllers/HomeController.vb))
-* [Order.cs](./CS/dxSampleT590924/Models/Order.cs) (VB: [Order.vb](./VB/dxSampleT590924/Models/Order.vb))
-* **[Index.cshtml](./CS/dxSampleT590924/Views/Home/Index.cshtml)**
-* [Success.cshtml](./CS/dxSampleT590924/Views/Home/Success.cshtml)
+* [HomeController.cs](./MVC/dxSampleT590924/Controllers/HomeController.cs)
+* [Order.cs](./MVC/dxSampleT590924/Models/Order.cs) 
+* **[Index.cshtml](./MVC/dxSampleT590924/Views/Home/Index.cshtml)**
+* [Success.cshtml](./MVC/dxSampleT590924/Views/Home/Success.cshtml)
 <!-- default file list end -->
 # How to submit DataGrid model with form values
 
