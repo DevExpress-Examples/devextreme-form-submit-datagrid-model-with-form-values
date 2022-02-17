@@ -3,15 +3,10 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T590924)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-
-<!-- default file list end -->
 # DevExtreme Form - How to submit DataGrid model with form values
 
-
-The HTML form can collect information from all hidden inputs and post it to the Controller. DataGrid initially does not have a hidden input. If you assign model values to the grid's [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#dataSource) option, the model values are not passed to the server. 
+The HTML form can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/) initially does not have a hidden input. If you assign model values to the grid's [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#dataSource) option, the model values are not passed to the server. 
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
