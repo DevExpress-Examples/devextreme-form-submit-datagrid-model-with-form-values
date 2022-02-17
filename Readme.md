@@ -6,17 +6,30 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [HomeController.cs](./MVC/dxSampleT590924/Controllers/HomeController.cs)
-* [Order.cs](./MVC/dxSampleT590924/Models/Order.cs) 
-* **[Index.cshtml](./MVC/dxSampleT590924/Views/Home/Index.cshtml)**
-* [Success.cshtml](./MVC/dxSampleT590924/Views/Home/Success.cshtml)
+
 <!-- default file list end -->
-# How to submit DataGrid model with form values
+# DevExtreme Form - How to submit DataGrid model with form values
 
 
-<p>By default, the HTML form collects information from all hidden inputs and posts it to the Controller. DataGrid is not an editor and doesn't have a hidden input. As a result, model values assigned to the grid's DataSource option are not passed to the server out of the box.</p>
-<p>You can manually create hidden inputs for each row at runtime, place them onto the form and specify their name attribute as demonstrated in the "<a href="https://www.red-gate.com/simple-talk/dotnet/asp-net/model-binding-asp-net-core/">Model Binding in ASP.NET Core</a> -> Binding to Collections" help topic before it is submitted.</p>
+<p>The HTML form can collect information from all hidden inputs and post it to the Controller. DataGrid initially does not have a hidden input. If you assign model values to the grid's [DataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#dataSource) option, the model values are not passed to the server. 
 
-<br/>
+This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
+
+![grid-model](submit-grid-model-with-form.png)
+
+## Files to Look At
+
+- [HomeController.cs](./MVC/dxSampleT590924/Controllers/HomeController.cs)
+- [Order.cs](./MVC/dxSampleT590924/Models/Order.cs) 
+- [Index.cshtml](./MVC/dxSampleT590924/Views/Home/Index.cshtml)
+- [Success.cshtml](./MVC/dxSampleT590924/Views/Home/Success.cshtml)
+
+## Documentation
+
+- [Getting Started with Form](https://js.devexpress.com/Documentation/Guide/UI_Components/Form/Getting_Started_with_Form/)
+- [Model Binding in ASP.NET Core](https://www.red-gate.com/simple-talk/dotnet/asp-net/model-binding-asp-net-core/)
 
 
+## More Examples
+
+- [Form - How to customize form items](https://github.com/DevExpress-Examples/Form-Custom-items)
