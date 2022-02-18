@@ -4,15 +4,42 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# DevExtreme Form - How to submit DataGrid model with form values
+# DevExtreme ASP.NET MVC Form - How to submit DataGrid model with form values
 
-The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
+The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input and it is placed into the form items template. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
 [[Run Online]](https://codecentral.devexpress.com/t590924/)
 
 ![grid-model](submit-grid-model-with-form.png)
+
+Specify the name attribute option of the input element and get grid data items on the **clickHandler** function. Then save the  data items into the hidden input in the **CreateInputElement** function. 
+
+```cshtml
+<script>
+    function CreateInputElement(itemName, itemValue, itemIndex, container) {
+        var $input = $("<input/>");
+
+        $input.appendTo(container).attr({ type: "hidden", name: "Orders[" + itemIndex + "]." + itemName }).val(itemValue);
+    }
+    function clickHandler(e) {
+        if (e.validationGroup.validate().isValid) {
+            $("#grid").dxDataGrid("instance").getDataSource().load().done(function (items) {
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    for (var property in item) {
+                        if (item.hasOwnProperty(property)) {
+                            CreateInputElement(property, item[property], i, $("#editEmployee")[0]);
+                        }
+                    }
+                }
+                $("#editEmployee").submit();
+            })
+        }
+    }
+</script>
+```
 
 ## Files to Look At
 
