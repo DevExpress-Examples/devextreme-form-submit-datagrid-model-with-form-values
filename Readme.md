@@ -10,6 +10,8 @@ The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtr
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
+[Run Online](https://codecentral.devexpress.com/t590924/)
+
 ![grid-model](submit-grid-model-with-form.png)
 
 ## Files to Look At
