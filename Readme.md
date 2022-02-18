@@ -6,7 +6,7 @@
 
 # DevExtreme Form - How to submit DataGrid model with form values
 
-The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/) initially does not have a hidden input. If you assign model values to the grid's [dataSource](https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxDataGrid/Configuration/#dataSource) option, the model values are not passed to the server. 
+The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
