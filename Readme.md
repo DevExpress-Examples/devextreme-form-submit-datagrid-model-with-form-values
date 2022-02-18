@@ -4,9 +4,9 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# DevExtreme ASP.NET MVC Form - How to submit DataGrid model with form values
+# DevExtreme ASP.NET MVC Form - How to submit a DataGrid model with form values
 
-The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input and the grid is placed into the form items template. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
+The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. The [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) does not initially have a hidden input, and the grid is placed into the form items template. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
@@ -14,7 +14,7 @@ This example shows how to create hidden inputs for each DataGrid row at runtime 
 
 ![grid-model](submit-grid-model-with-form.png)
 
-Specify the "name" attribute option of the hidden input element. Then, get grid data items on **clickHandler**. Save the data items into the input element in the **CreateInputElement** function. 
+Specify the "name" attribute option of the hidden input element. Then get grid data items in **clickHandler**. Save the data items to the input element in the **CreateInputElement** function. 
 
 ```cshtml
 <script>
