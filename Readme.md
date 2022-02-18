@@ -6,7 +6,7 @@
 
 # DevExtreme ASP.NET MVC Form - How to submit DataGrid model with form values
 
-The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input and it is placed into the form items template. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
+The DevExtreme ASP.NET MVC [Form](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.FormBuilder-1) can collect information from all hidden inputs and post it to the Controller. [DataGrid](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1) initially does not have a hidden input and the grid is placed into the form items template. If you assign model values to the grid's [dataSource](https://docs.devexpress.com/AspNetCore/DevExtreme.AspNet.Mvc.Builders.DataGridBuilder-1.DataSource(DevExtreme.AspNet.Mvc.JS)) option, the model values are not passed to the server. 
 
 This example shows how to create hidden inputs for each DataGrid row at runtime and place the hidden inputs onto the form. 
 
@@ -14,7 +14,7 @@ This example shows how to create hidden inputs for each DataGrid row at runtime 
 
 ![grid-model](submit-grid-model-with-form.png)
 
-Specify the name attribute option of the input element and get grid data items on the **clickHandler** function. Then save the  data items into the hidden input in the **CreateInputElement** function. 
+Get grid data items on the **clickHandler** function. Then, specify the name attribute option of the input element and save the data items into it in the **CreateInputElement** function. 
 
 ```cshtml
 <script>
