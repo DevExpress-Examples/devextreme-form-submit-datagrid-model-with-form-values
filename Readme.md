@@ -14,7 +14,7 @@ This example shows how to create hidden inputs for each DataGrid row at runtime 
 
 ![grid-model](submit-grid-model-with-form.png)
 
-Specify the "name" attribute option of the hidden input element. Then get grid data items in **clickHandler**. Save the data items to the input element in the **CreateInputElement** function. 
+Specify the "name" attribute option of the hidden input element. Then, get grid data items from the **clickHandler** event. Save the data items to the input element in the **CreateInputElement** function. 
 
 ```cshtml
 <script>
