@@ -12,7 +12,7 @@ This example shows how to create hidden inputs for each DataGrid row at runtime 
 
 [[Run Online]](https://codecentral.devexpress.com/t590924/)
 
-![grid-model](submit-grid-model-with-form.png)
+<div align="center"><img alt="DevExtreme DataGrid model" src="submit-grid-model-with-form.png" /></div>
 
 Specify the "name" attribute option of the hidden input element. Then, get grid data items from the **clickHandler** event. Save the data items to the input element in the **CreateInputElement** function. 
 
@@ -41,7 +41,7 @@ Specify the "name" attribute option of the hidden input element. Then, get grid 
 </script>
 ```
 
-## Files to Look At
+## Files to Review
 
 - [HomeController.cs](./MVC/dxSampleT590924/Controllers/HomeController.cs)
 - [Order.cs](./MVC/dxSampleT590924/Models/Order.cs) 
