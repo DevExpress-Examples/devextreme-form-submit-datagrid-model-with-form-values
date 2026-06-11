@@ -1,0 +1,32 @@
+@using ASP_NET_Core.Models
+@model Customer
+
+<h2>The model was posted successfully</h2>
+
+<p>
+    Customer @Model.CustomerID: <b>@Model.FirstName @Model.LastName</b>, hired @Model.HireDate.ToShortDateString()
+</p>
+
+@if (Model.Orders != null && Model.Orders.Count > 0) {
+    <h3>Posted orders (@Model.Orders.Count):</h3>
+    <table class="posted-orders">
+        <thead>
+            <tr><th>Order ID</th><th>Order Date</th><th>Customer Name</th><th>Ship Country</th><th>Ship City</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders) {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.OrderDate.ToShortDateString()</td>
+                    <td>@order.CustomerName</td>
+                    <td>@order.ShipCountry</td>
+                    <td>@order.ShipCity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else {
+    <p>No orders were posted.</p>
+}
+
+<a href="@Url.Action("Index")">Back to the form</a>
