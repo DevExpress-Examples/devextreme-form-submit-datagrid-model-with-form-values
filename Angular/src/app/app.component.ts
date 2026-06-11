@@ -1,21 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DxButtonModule, DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxFormModule } from 'devextreme-angular/ui/form';
+import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 
 @Component({
     selector: 'app-root',
-    imports: [DxButtonModule],
+    imports: [DxButtonModule, DxFormModule, DxDataGridModule],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Angular';
+  @ViewChild('editEmployee', { static: false })
+  formElement!: ElementRef<HTMLFormElement>;
 
-  counter = 0;
+  @ViewChild(DxDataGridComponent, { static: false })
+  grid!: DxDataGridComponent;
 
-  buttonText = 'Click count: 0';
+  customer = {
+    CustomerID: 1,
+    FirstName: '',
+    LastName: '',
+    HireDate: null,
+  };
 
-  onClick(_e: DxButtonTypes.ClickEvent): void {
-    this.counter++;
-    this.buttonText = `Click count: ${this.counter}`;
+  customerIdEditorOptions = { readOnly: true };
+
+  orders: Record<string, unknown>[] = [];
+
+  payload = '';
+
+  onSubmit(e: Event): void {
+    e.preventDefault();
+    const formElement = this.formElement.nativeElement;
+    const lines = [...new FormData(formElement).entries()]
+      .map(([name, value]) => `${name}=${value}`);
+    this.payload = `Submitted payload:\n${lines.join('\n')}`;
+  }
+
+  onButtonClick(e: DxButtonTypes.ClickEvent): void {
+    if (!e.validationGroup?.validate().isValid) {
+      return;
+    }
+    const formElement = this.formElement.nativeElement;
+    const grid = this.grid.instance;
+    formElement.querySelectorAll('input.order-input').forEach((el) => el.remove());
+    grid.getDataSource().load().then((items: Record<string, unknown>[]) => {
+      items.forEach((item, itemIndex) => {
+        Object.keys(item).forEach((property) => {
+          this.createInputElement(property, item[property], itemIndex, formElement);
+        });
+      });
+      formElement.requestSubmit();
+    });
+  }
+
+  private createInputElement(
+    itemName: string,
+    itemValue: unknown,
+    itemIndex: number,
+    container: HTMLFormElement,
+  ): void {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.className = 'order-input';
+    input.name = `Orders[${itemIndex}].${itemName}`;
+    input.value = String(itemValue ?? '');
+    container.appendChild(input);
   }
 }

@@ -1,3 +1,58 @@
 <div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+  <h2>Edit Form:</h2>
+  <form #editEmployee method="post" action="#" (submit)="onSubmit($event)">
+    <dx-form [formData]="customer" validationGroup="customer">
+      <dxi-item
+        dataField="CustomerID"
+        editorType="dxNumberBox"
+        [editorOptions]="customerIdEditorOptions"
+      ></dxi-item>
+      <dxi-item dataField="FirstName">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+        ></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="LastName">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+        ></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="HireDate" editorType="dxDateBox"></dxi-item>
+    </dx-form>
+    <dx-data-grid
+      id="grid"
+      [dataSource]="orders"
+      keyExpr="OrderID"
+      [showBorders]="true"
+      dateSerializationFormat="MM-dd-yyyy"
+      [remoteOperations]="false"
+    >
+      <dxo-editing
+        [allowUpdating]="true"
+        [allowAdding]="true"
+        [allowDeleting]="true"
+      ></dxo-editing>
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      <dxo-filter-row [visible]="true"></dxo-filter-row>
+      <dxo-header-filter [visible]="true"></dxo-header-filter>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+      <dxi-column dataField="OrderID"></dxi-column>
+      <dxi-column dataField="OrderDate" dataType="date"></dxi-column>
+      <dxi-column dataField="CustomerName"></dxi-column>
+      <dxi-column dataField="ShipCountry"></dxi-column>
+      <dxi-column dataField="ShipCity"></dxi-column>
+    </dx-data-grid>
+    <dx-button
+      text="Validate and Submit"
+      validationGroup="customer"
+      [useSubmitBehavior]="false"
+      (onClick)="onButtonClick($event)"
+    ></dx-button>
+  </form>
+  <pre id="payload">{{ payload }}</pre>
 </div>
