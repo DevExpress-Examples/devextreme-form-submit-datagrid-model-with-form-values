@@ -2,3 +2,13 @@
   margin: 50px;
   width: 90vw;
 }
+
+#grid {
+  margin: 20px 0;
+}
+
+#payload {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgb(191 191 191 / 15%);
+}
