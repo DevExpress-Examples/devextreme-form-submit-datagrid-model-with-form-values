@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DevExtreme jQuery app</title>
+    <title>How to submit a DataGrid model with form values</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -15,7 +15,13 @@
 
   <body class="dx-viewport">
     <div class="demo-container">
-      <div id="btn"></div>
+      <h2>Edit Form:</h2>
+      <form id="edit-employee" method="post" action="#">
+        <div id="form"></div>
+        <div id="grid"></div>
+        <div id="submit-button"></div>
+      </form>
+      <pre id="payload"></pre>
     </div>
   </body>
 </html>
