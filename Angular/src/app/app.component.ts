@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { DxButtonModule, DxButtonTypes } from 'devextreme-angular/ui/button';
 import { DxFormModule } from 'devextreme-angular/ui/form';
 import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular/ui/data-grid';
@@ -7,6 +7,7 @@ import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular/ui/dat
     selector: 'app-root',
     imports: [DxButtonModule, DxFormModule, DxDataGridModule],
     templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
